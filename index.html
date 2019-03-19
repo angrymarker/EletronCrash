@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Test</title>
+    <script>
+    console.time('total')
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script src="jquery-3.3.1.min.js">
+    </script>
+    <script>
+        if (window.module) module = window.module;
+    </script>
+</head>
+
+<body>
+    <button type="button" id="test">Test</button>
+    <script>
+    	$( document ).ready(function() {
+		    console.log( "ready!" );
+		    $("#test").click(function(){
+		    	console.log('clicked');
+		    	testget();
+		    });
+		});
+		
+		function testget()
+		{
+			var url = 'https://webhook.site/921cc644-585b-4152-b79f-d5081a51e102';
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: "test",
+				success: function(data){
+					if (data == "")
+					{
+						console.log('success');
+					}
+					else
+					{
+						console.log(data);
+					}
+				}
+			});
+		}
+    </script>
+</body>
+
+</html>
